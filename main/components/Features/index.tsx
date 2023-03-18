@@ -1,5 +1,30 @@
 import Image from "next/image";
 
+
+interface featuresdata {
+    imgSrc: string;
+    heading: string;
+    subheading: string;
+}
+
+const featuresdata: featuresdata[] = [
+    {
+        imgSrc: '/images/Features/featureOne.svg',
+        heading: 'Secure storage',
+        subheading: 'We lake data security and privacy very seriously',
+    },
+    {
+        imgSrc: '/images/Features/featureTwo.svg',
+        heading: 'Free to use',
+        subheading: 'Top notch crypto portfolio traking at no cost',
+    },
+    {
+        imgSrc: '/images/Features/featureThree.svg',
+        heading: 'Real-time price data',
+        subheading: 'Updating 24/7 using price data form the biggest exchanges',
+    },
+]
+
 const Features = () => {
     return (
         <div className="mx-auto max-w-7xl my-0 md:my-40 pt-36 px-6 relative" id="features-section">
@@ -14,30 +39,15 @@ const Features = () => {
                 {/* Column-2 */}
                 <div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 lg:-mr-56">
-                        {/* Column-1 */}
-                        <div className="bg-blue py-10 pr-12 pl-6 rounded-lg">
-                            <div className="rounded-full gg h-16 w-16 flex items-center justify-center mb-10">
-                                <Image src={'/images/Features/featureOne.svg'} alt="featureOne" width={24} height={30} />
+                        {featuresdata.map((items, i) => (
+                            <div className="bg-blue py-10 pr-12 pl-6 rounded-lg" key={i}>
+                                <div className="rounded-full gg h-16 w-16 flex items-center justify-center mb-10">
+                                    <Image src={items.imgSrc} alt={items.imgSrc} width={24} height={30} />
+                                </div>
+                                <h5 className="text-offwhite text-lg font-medium mb-4">{items.heading}</h5>
+                                <p className="text-lightblue text-sm font-normal">{items.subheading}</p>
                             </div>
-                            <h5 className="text-offwhite text-lg font-medium mb-4">Secure storage</h5>
-                            <p className="text-lightblue text-sm font-normal">We lake data security and privacy very seriously</p>
-                        </div>
-                        {/* Column-2 */}
-                        <div className="bg-blue py-10 pr-12 pl-6 rounded-lg">
-                            <div className="rounded-full gg h-16 w-16 flex items-center justify-center mb-10">
-                                <Image src={'/images/Features/featureTwo.svg'} alt="featureTwo" width={24} height={30} />
-                            </div>
-                            <h5 className="text-offwhite text-lg font-medium mb-4">Free to use</h5>
-                            <p className="text-lightblue text-sm font-normal">Top notch crypto portfolio traking at no cost</p>
-                        </div>
-                        {/* Column-3 */}
-                        <div className="bg-blue py-10 pr-12 pl-6 rounded-lg">
-                            <div className="rounded-full gg h-16 w-16 flex items-center justify-center mb-10">
-                                <Image src={'/images/Features/featureThree.svg'} alt="featureThree" width={24} height={30} />
-                            </div>
-                            <h5 className="text-offwhite text-lg font-medium mb-4">Real-time price data</h5>
-                            <p className="text-lightblue text-sm font-normal">Updating 24/7 using price data form the biggest exchanges</p>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
